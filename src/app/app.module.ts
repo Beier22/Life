@@ -9,10 +9,16 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
+import {LoginComponent} from './login/login.component';
+import {HomeComponent} from './home/home.component';
+import {CreateComponent} from './create/create.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
