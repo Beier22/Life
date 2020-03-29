@@ -1,6 +1,6 @@
-import { Product } from '../models/product'
-import { ProductRepository } from './product.repository'
-import {Stock} from "../models/stock";
+import {Product} from '../models/product';
+import {ProductRepository} from './product.repository';
+import {Stock} from '../models/stock';
 
 export class ProductService {
     constructor(private productRepository: ProductRepository) {}
@@ -11,17 +11,15 @@ export class ProductService {
     }
 
     createStock(prodId: string, product: Product): Stock {
-      const stock: Stock = {
+      return {
         uid: prodId,
         name: product.name,
         amount: 5
       };
-      return stock;
     }
 
     updateProduct(prodId: string, productAfter: Product): Promise<any> {
-      const product: Product = productAfter;
-      const stock: Stock = this.createStock(prodId, product);
+      const stock: Stock = this.createStock(prodId, productAfter);
       return this.productRepository.updateProduct(prodId, stock);
     }
 }
