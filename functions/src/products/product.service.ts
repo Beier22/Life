@@ -1,6 +1,7 @@
 import {Product} from '../models/product';
 import {ProductRepository} from './product.repository';
 import {Stock} from '../models/stock';
+import {Order} from '../models/order';
 
 export class ProductService {
     constructor(private productRepository: ProductRepository) {}
@@ -22,10 +23,14 @@ export class ProductService {
       return this.productRepository.updateProduct(prodId, productAfter);
     }
 
-    buy(product: Product): Product {
+    buy(product: Product, amount: number): Order {
       if(product) {
-        product.timesPurchased = product.timesPurchased +1;
-        return product;
+        product.timesPurchased = product.timesPurchased + amount;
+        const order: Order = {
+          product: product,
+          amount: amount
+        };
+        return order;
       }
       return undefined as any;
     }
