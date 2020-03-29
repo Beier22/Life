@@ -124,5 +124,6 @@ fabric.properties
 # Additional #
 src/environments
 functions/secret.json
+!functions/jest.config.js
 
 # End of https://www.gitignore.io/api/angular,webstorm

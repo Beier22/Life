@@ -5,4 +5,7 @@
 # Typescript v1 declaration files
 typings/
 
+!jest.config.js
+
 node_modules/
+

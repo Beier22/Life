@@ -18,4 +18,10 @@ export class ProductService {
       };
       return stock;
     }
+
+    updateProduct(prodId: string, productAfter: Product): Promise<any> {
+      const product: Product = productAfter;
+      const stock: Stock = this.createStock(prodId, product);
+      return this.productRepository.updateProduct(prodId, stock);
+    }
 }

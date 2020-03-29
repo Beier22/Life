@@ -16,6 +16,12 @@ exports.setStock = functions.firestore
         return df.getProductController().setStock(snap, context);
     });
 
+exports.updateProduct = functions.firestore
+  .document('products/{prodId}')
+  .onUpdate((snap, context) => {
+    return df.getProductController().updateProduct(snap, context);
+  })
+
 
 
 // // Start writing Firebase Functions
