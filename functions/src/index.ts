@@ -22,7 +22,11 @@ exports.updateProduct = functions.firestore
     return df.getProductController().updateProduct(snap, context);
   });
 
-
+exports.buy = functions.firestore
+  .document('orders/{orderId}')
+  .onCreate((snap, context) => {
+    return df.getProductController().buy(snap, context);
+  });
 
 
 // // Start writing Firebase Functions

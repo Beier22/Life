@@ -23,14 +23,18 @@ export class ProductService {
       return this.productRepository.updateProduct(prodId, productAfter);
     }
 
-    buy(product: Product, amount: number): Order {
+    async buy(orderId: string, order: Order): Promise<any> {
+      const product: Product = await this.productRepository.getProduct(order.productId);
+      this.updateStock(product, order.amount);
+      order.name = product.name;
+      order.uid = orderId;
+      return this.productRepository.buy(order);
+    }
+
+    updateStock(product: Product, amount: number): Product {
       if(product) {
         product.timesPurchased = product.timesPurchased + amount;
-        const order: Order = {
-          product: product,
-          amount: amount
-        };
-        return order;
+        return product;
       }
       return undefined as any;
     }

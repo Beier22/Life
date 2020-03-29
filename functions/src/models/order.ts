@@ -1,7 +1,6 @@
-import {Product} from './product';
-
 export interface Order {
   uid?: string;
-  product: Product;
+  productId: string;
+  name?: string;
   amount: number;
 }

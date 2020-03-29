@@ -3,7 +3,6 @@ import {IMock, Mock} from 'moq.ts';
 import {ProductService} from '../../src/products/product.service';
 import {Product} from '../../src/models/product';
 import {Stock} from '../../src/models/stock';
-import {Order} from '../../src/models/order';
 
 
 describe('ProductService', () => {
@@ -29,9 +28,9 @@ describe('ProductService', () => {
     expect(stockAdded.amount).toBe(5);
   });
 
-  it('When a product is bought, it should in the times purchased by one', async() => {
-    const order: Order = serv.buy(product, 1);
-    expect(order.product.timesPurchased).toBe(1);
-  });
+ /* it('When a product is bought, it should in the times purchased by one', async() => {
+    const boughtProduct: Product = serv.buy(product, 1);
+    expect(boughtProduct.timesPurchased).toBe(1);
+  });*/
 
 });
