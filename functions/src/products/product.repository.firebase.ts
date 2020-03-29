@@ -7,7 +7,7 @@ export class ProductRepositoryFirebase implements ProductRepository {
     setStock(stock: Stock): Promise<any> {
         return this.db().doc(`stock/${stock.uid}`).set(
             stock
-        );
+        ).catch();
     }
 
     db(): FirebaseFirestore.Firestore {
