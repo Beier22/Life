@@ -26,6 +26,11 @@ describe('ProductService', () => {
   it('When a stock is created, it should have an amount of 5', async() => {
     const stockAdded: Stock = serv.createStock(product.uid, product);
     expect(stockAdded.amount).toBe(5);
-  })
+  });
+
+  it('When a product is bought, it should in the times purchased by one', async() => {
+    const boughtProduct: Product = serv.buy(product);
+    expect(boughtProduct.timesPurchased).toBe(1);
+  });
 
 });
