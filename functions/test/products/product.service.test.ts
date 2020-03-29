@@ -18,11 +18,14 @@ describe('ProductService', () => {
   });
 
 
-  it('When a product is created a stock should be made, with an amount of 5', async() => {
-    const stockAdded: Stock = serv.setStock(product.uid, product);
+  it('When a product is created a stock should also be made, with the same name', async() => {
+    const stockAdded: Stock = serv.createStock(product.uid, product);
     expect(stockAdded.name).toBe(product.name);
   });
 
-
+  it('When a stock is created, it should have an amount of 5', async() => {
+    const stockAdded: Stock = serv.createStock(product.uid, product);
+    expect(stockAdded.amount).toBe(5);
+  })
 
 });
