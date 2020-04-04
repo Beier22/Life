@@ -26,8 +26,8 @@ export class OrderService{
   async addProductInfo(ols: OrderLine[]): Promise<OrderLine[]>{
     const lines: OrderLine[] = [];
     for (const ol of ols){
-      const temp = await this.productRepository.getProduct(ol.product.uid);
-      lines.push(temp);
+      ol.product = await this.productRepository.getProduct(ol.product.uid);
+      lines.push(ol);
     }
     return lines;
   }
