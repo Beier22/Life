@@ -1,7 +1,6 @@
 import {Product} from '../models/product';
 import {ProductRepository} from './product.repository';
 import {Stock} from '../models/stock';
-import {Order} from '../models/order';
 
 export class ProductService {
     constructor(private productRepository: ProductRepository) {}
@@ -23,13 +22,13 @@ export class ProductService {
       return this.productRepository.updateProduct(prodId, productAfter);
     }
 
-    async buy(orderId: string, order: Order): Promise<any> {
+    /*async buy(orderId: string, order: Order): Promise<any> {
       const product: Product = await this.productRepository.getProduct(order.productId);
       this.updateStock(product, order.amount);
       order.name = product.name;
       order.uid = orderId;
       return this.productRepository.buy(order);
-    }
+    }*/
 
     updateStock(product: Product, amount: number): Product {
       if(product) {
@@ -38,4 +37,6 @@ export class ProductService {
       }
       return undefined as any;
     }
+
+
 }

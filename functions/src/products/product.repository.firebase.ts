@@ -2,7 +2,6 @@ import * as admin from 'firebase-admin';
 import {ProductRepository} from './product.repository';
 import {Stock} from '../models/stock';
 import {Product} from '../models/product';
-import {Order} from '../models/order';
 
 export class ProductRepositoryFirebase implements ProductRepository {
 
@@ -34,9 +33,9 @@ export class ProductRepositoryFirebase implements ProductRepository {
     })
   }
 
-  buy(order: Order): Promise<any> {
+  /*buy(order: Order): Promise<any> {
     return this.db().doc(`orders/${order.uid}`).set(
       order
     );
-  }
+  }*/
 }

@@ -1,6 +1,8 @@
+import {OrderLine} from './orderLine';
+
 export interface Order {
-  uid?: string;
-  productId: string;
-  name?: string;
+  uid: string;
+  date: number;
+  ols: OrderLine[];
   amount: number;
 }
