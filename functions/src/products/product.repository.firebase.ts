@@ -16,6 +16,12 @@ export class ProductRepositoryFirebase implements ProductRepository {
     ).catch();
   }
 
+  async getStock(stockId: string): Promise<any> {
+    return await this.db().doc(`stock/${stockId}`).get().then(function(doc) {
+      return doc.data() as Stock
+    });
+  }
+
 
   updateProduct(prodId: string, product: Product): Promise<any> {
     return this.db().doc(`stock/${prodId}`).get().then(function(doc) {
@@ -32,6 +38,12 @@ export class ProductRepositoryFirebase implements ProductRepository {
       return doc.data() as Product
     })
   }
+
+  setProduct(uid: string, product: Product): Promise<any> {
+    return this.db().doc(`products/${uid}`).set(product);
+  }
+
+
 
   /*buy(order: Order): Promise<any> {
     return this.db().doc(`orders/${order.uid}`).set(

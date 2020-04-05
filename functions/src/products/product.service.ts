@@ -30,13 +30,7 @@ export class ProductService {
       return this.productRepository.buy(order);
     }*/
 
-    updateStock(product: Product, amount: number): Product {
-      if(product) {
-        product.timesPurchased = product.timesPurchased + amount;
-        return product;
-      }
-      return undefined as any;
-    }
+
 
 
 }

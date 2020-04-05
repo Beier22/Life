@@ -12,7 +12,7 @@ export class OrderControllerFirebase implements OrderController {
   }
 
 
-  processOrder(snap: DocumentSnapshot, context: EventContext): Promise<void> {
+  processOrder(snap: DocumentSnapshot, context: EventContext): Promise<any> {
     const order = snap.data() as Order;
     return this.orderService.processOrder(context.params.orderId, order);
   }
