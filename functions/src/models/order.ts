@@ -4,5 +4,4 @@ export interface Order {
   uid: string;
   date: number;
   ols: OrderLine[];
-  amount: number;
 }

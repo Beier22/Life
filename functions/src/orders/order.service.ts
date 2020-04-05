@@ -14,12 +14,15 @@ export class OrderService{
 
   processOrder(orderId: string, order: Order): Promise<any> {
     console.log(this.productRepository);
+    order.uid = orderId;
     return this.createOrderLines(order);
   }
 
   async createOrderLines(order: Order): Promise<any> {
     const lines: OrderLine[] = await this.addProductInfo(order.ols);
     await this.orderRepository.createOrderLines(lines);
+    order.ols = lines;
+    return this.orderRepository.setOrder(order);
   }
 
 // This uses the product ID of an orderline to add all information of the product to the orderline
